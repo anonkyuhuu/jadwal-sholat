@@ -1,7 +1,7 @@
 # jadwal-sholat
 Tool jadwal sholat in cli
 
-# instal7l
+# install
 $ apt-get update
 $ apt install git python
 $ pip2 install requests re
