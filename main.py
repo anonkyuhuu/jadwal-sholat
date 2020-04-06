@@ -10,6 +10,7 @@ banner ="""
   \__'__/         Version 0.1"""
 
 def help():
+	print(banner)
 	exit('''
 This tool only use python3
 
