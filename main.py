@@ -22,7 +22,10 @@ python3 main.py jakarta''')
 
 
 try:
-	x = requests.get('http://muslimsalat.com/%s'%(sys.argv[1])).text
+	d = ""
+	for i in sys.argv:
+		d += i + ' '
+	x = requests.get('http://muslimsalat.com/%s'%(d)).text
 	s = re.search('"title":"(.*?)"', x).group(1)
 	z = r'{"date_for":"(.*?)","fajr":"(.*?)","shurooq":"(.*?)","dhuhr":"(.*?)","asr":"(.*?)","maghrib":"(.*?)","isha":"(.*?)"}'
 	a = re.search(z, x)
