@@ -1,6 +1,5 @@
 import requests, sys, re, os
 
-city = input('Your City : ')
 os.system('clear')
 banner ="""
    _____
@@ -10,12 +9,27 @@ banner ="""
  |       |   |==================|
   \__'__/         Version 0.1"""
 
+def help():
+	exit('''
+This tool only use python3
+
+usage:
+python3 main.py [city]
+
+ex:
+python3 main.py jakarta''')
+
+
 try:
-	print(banner)
-	x = requests.get('http://muslimsalat.com/%s'%(city)).text
+	d = ""
+	for i in sys.argv:
+		d += i + " "
+	d = d.replace('main.py ','')
+	x = requests.get('http://muslimsalat.com/%s'%(d)).text
 	s = re.search('"title":"(.*?)"', x).group(1)
 	z = r'{"date_for":"(.*?)","fajr":"(.*?)","shurooq":"(.*?)","dhuhr":"(.*?)","asr":"(.*?)","maghrib":"(.*?)","isha":"(.*?)"}'
 	a = re.search(z, x)
+	print(banner)
 	if s == '':
 		b = re.search('"query":"(.*?)"', x).group(1)
 		b = b.replace(b[0], b[0].upper())
@@ -32,4 +46,5 @@ Isha : %s'''%(a.group(1),a.group(2),a.group(3),a.group(4),a.group(5),a.group(6),
 except KeyboardInterrupt:
 	pass
 except:
-	print('Your City Not Found')
+	print(banner)
+	help()
