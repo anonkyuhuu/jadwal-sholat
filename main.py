@@ -31,5 +31,5 @@ Maghrib : %s
 Isha : %s'''%(a.group(1),a.group(2),a.group(3),a.group(4),a.group(5),a.group(6),a.group(7)))
 except KeyboardInterrupt:
 	pass
-#except:
-#	help()
+except:
+	print('Your City Not Found')
